@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: teams
@@ -10,4 +12,5 @@
 
 class Team < ApplicationRecord
   has_many :users
+  has_many :custom_forms
 end
