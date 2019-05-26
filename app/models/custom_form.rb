@@ -13,4 +13,6 @@
 class CustomForm < ApplicationRecord
   belongs_to :team
   has_many :custom_form_fields
+
+  accepts_nested_attributes_for :custom_form_fields, allow_destroy: true
 end

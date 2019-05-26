@@ -1,1 +1,16 @@
-h1 edit page
+h1 edit form with ID: #{@custom_form.id}
+
+= form_with model: @custom_form, url: { action: :update }, local: true do |form|
+  = form.fields model: :custom_form_fields do |field|
+    div
+      p = field.label :title
+      = field.hidden_field :type, value: field.object.data_type
+      = field.text_field :title, value: field.object.data['title']
+
+  = form.fields CustomFormField.new do |field|
+    div
+      p = field.label :title
+      = field.text_field :title
+  br
+  br
+  div = form.submit 'Save'

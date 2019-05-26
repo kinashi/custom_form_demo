@@ -19,9 +19,13 @@ end
 
 create_table :custom_form_fields, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.bigint :custom_form_id
+  t.integer :data_type, null: false
+  t.integer :order, null: false
   t.json :data, null: false
 
   t.timestamps null: false
+
+  t.index [:custom_form_id, :order], unique: true
 end
 
 create_table :custom_form_answers, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
