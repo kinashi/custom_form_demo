@@ -1,0 +1,33 @@
+create_table :teams, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string :name, null: false, unique: true
+
+  t.timestamps null: false
+end
+
+create_table :users, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string :name, null: false
+  t.string :email, null: false, unique: true
+
+  t.timestamps null: false
+end
+
+create_table :custom_forms, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.bigint :team_id, null: false
+
+  t.timestamps null: false
+end
+
+create_table :custom_form_fields, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.bigint :custom_form_id
+  t.json :data, null: false
+
+  t.timestamps null: false
+end
+
+create_table :custom_form_answers, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.bigint :user_id, null: false
+  t.bigint :custom_form_id, null: false
+  t.json :data, null: false
+
+  t.timestamps null: false
+end
